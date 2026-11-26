@@ -1,0 +1,20 @@
+`timescale 1ns / 1ps
+
+module halfAdderTestBench;
+reg x,y; // input connections
+wire z, carryout; // output and carryout connections
+
+// Instantiate the design under test
+halfAdder HA00 (.A(x), .B(y), .Sum(z), .Carry(carryout));
+
+initial begin
+
+#time is changed by the #10 at the start, initialized to 0.
+#10 x = 0; y = 0; //time = 10
+#10 x = 0; y = 1; //time = 20
+#10 x = 1; y = 0; //time = 30
+#10 x = 1; y = 1; //time = 40
+
+$finish; // <- ends testbench through a system task
+end
+endmodule
