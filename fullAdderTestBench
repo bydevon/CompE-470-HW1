@@ -1,0 +1,23 @@
+`timescale 1ns / 1ps
+
+module fullAdderTestBench;
+
+reg x, y, ci;
+wire z, cout;
+
+fulLAdder FA00 (.A(x), .B(y), .CarryIN(ci), .S(z), .CarryOUT(cout));
+
+initial begin
+
+#10 x = 0; y = 0; ci = 0;
+#10 x = 0; y = 0; ci = 1;
+#10 x = 0; y = 1; ci = 0;
+#10 x = 0; y = 1; ci = 1;
+#10 x = 1; y = 0; ci = 0;
+#10 x = 1; y = 0; ci = 1;
+#10 x = 1; y = 1; ci = 0;
+#10 x = 1; y = 1; ci = 1;
+
+$finish;
+end
+endmodule
